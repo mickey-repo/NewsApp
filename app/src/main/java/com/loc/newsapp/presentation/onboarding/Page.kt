@@ -25,5 +25,4 @@ val pages = listOf(
         description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         image = R.drawable.onboarding3
     )
-
 )

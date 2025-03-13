@@ -1,9 +1,8 @@
+
 package com.loc.newsapp.presentation.common
 
-import android.widget.Button
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,9 +16,11 @@ import com.loc.newsapp.ui.theme.WhiteGray
 @Composable
 fun NewsButton(
     text: String,
-    onClick: () -> Unit
-){
-    Button(onClick = onClick,
+    onClick: () -> Unit,
+) {
+
+    Button(
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = Color.White
@@ -28,16 +29,16 @@ fun NewsButton(
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
+            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
+            color = Color.White
         )
     }
 }
 
-
 @Composable
 fun NewsTextButton(
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     TextButton(onClick = onClick) {
         Text(
@@ -46,5 +47,4 @@ fun NewsTextButton(
             color = WhiteGray
         )
     }
-
 }

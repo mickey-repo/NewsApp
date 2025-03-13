@@ -1,8 +1,11 @@
 package com.loc.newsapp.presentation.onboarding
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
@@ -24,10 +28,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.loc.newsapp.presentation.Dimens.MediumPadding2
+import com.loc.newsapp.presentation.Dimens.MediumPadding3
 import com.loc.newsapp.presentation.common.NewsButton
 import com.loc.newsapp.presentation.common.NewsTextButton
 import com.loc.newsapp.presentation.onboarding.components.OnBoardingPage
-import com.loc.newsapp.presentation.onboarding.components.PageIndicator
+import com.loc.newsapp.presentation.onboarding.components.PagerIndicator
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -35,14 +40,6 @@ import kotlinx.coroutines.launch
 fun OnBoardingScreen(
     onEvent: (OnBoardingEvent) -> Unit
 ) {
-    val isSystemInDarkMode = isSystemInDarkTheme()
-    val systemUiColor = rememberSystemUiController()
-    SideEffect {
-        systemUiColor.setSystemBarsColor(
-            color = Color.Black.copy(0.1f),
-            darkIcons = isSystemInDarkMode
-        )
-    }
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
             pages.size
@@ -69,9 +66,9 @@ fun OnBoardingScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            PageIndicator(
+            PagerIndicator(
                 modifier = Modifier.width(52.dp),
-                pageSize = pages.size,
+                pagesSize = pages.size,
                 selectedPage = pagerState.currentPage
             )
 

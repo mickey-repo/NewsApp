@@ -15,20 +15,19 @@ import com.loc.newsapp.presentation.Dimens.IndicatorSize
 import com.loc.newsapp.ui.theme.BlueGray
 
 @Composable
-fun PageIndicator(
+fun PagerIndicator(
     modifier: Modifier = Modifier,
-    pageSize: Int,
+    pagesSize: Int,
     selectedPage: Int,
     selectedColor: Color = MaterialTheme.colorScheme.primary,
-    unselectedColor: Color =  BlueGray,
-    ){
-    Row (
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ){
-        repeat(pageSize){ page ->
+    unselectedColor: Color = BlueGray,
+) {
+    Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceBetween) {
+        repeat(times = pagesSize) { page ->
             Box(
-                modifier = Modifier.size(IndicatorSize).clip(CircleShape)
+                modifier = Modifier
+                    .size(IndicatorSize)
+                    .clip(CircleShape)
                     .background(color = if (page == selectedPage) selectedColor else unselectedColor)
             )
         }

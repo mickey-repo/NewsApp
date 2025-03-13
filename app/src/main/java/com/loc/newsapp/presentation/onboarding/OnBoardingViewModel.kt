@@ -2,14 +2,14 @@ package com.loc.newsapp.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.loc.newsapp.domain.manager.usercases.app_entry.AppEntryUserCases
+import com.loc.newsapp.domain.usecases.app_entry.SaveAppEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class OnBoardingViewModel @Inject constructor(
-    private val appEntryUseCases: AppEntryUserCases
+    private val saveAppEntry: SaveAppEntry
 ) : ViewModel() {
 
     fun onEvent(event: OnBoardingEvent){
@@ -22,10 +22,7 @@ class OnBoardingViewModel @Inject constructor(
 
     private fun saveUserEntry() {
         viewModelScope.launch {
-            // Calls the saveAppEntry function, causing it to run.
-            appEntryUseCases.saveAppEntry()
-            // Refers to the saveAppEntry function itself, without executing it
-            // appEntryUseCases.saveAppEntry
+            saveAppEntry()
         }
     }
 
